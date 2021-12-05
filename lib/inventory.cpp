@@ -34,7 +34,7 @@ void Inventory::remove(Item &item) {
 }
 
 void Inventory::place(Item &item, std::pair<int, int> origin) {
-  auto itemMatrix = item.get_matrix();
+  auto itemMatrix = item.shape();
   auto invMatrix = get_matrix();
   int x = origin.first;
   int y = origin.second;

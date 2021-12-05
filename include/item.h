@@ -25,9 +25,12 @@ public:
 
   Item(int id, std::vector<bool> shape);
 
-  std::vector<std::vector<int>> get_matrix();
+  // setters
+  void shape(std::vector<std::vector<int>> shape) { matrix = shape; }
 
-  int id();
+  // getters
+  int id() { return itemID; }
+  std::vector<std::vector<int>> shape() { return matrix; }
 };
 
 #endif

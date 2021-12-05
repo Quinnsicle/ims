@@ -47,7 +47,3 @@ Item::Item(int id, std::vector<bool> shape)
     matrix[0][i] = shape[i] ? itemID : 0;
   }
 }
-
-std::vector<std::vector<int>> Item::get_matrix() { return matrix; }
-
-int Item::id() { return itemID; }
