@@ -33,8 +33,8 @@ Item::Item(int id, std::vector<int> shape)
 Item::Item(int id, std::vector<std::vector<bool>> shape)
     : height(shape.size()), width(shape[0].size()), itemID(id) {
   initialize_matrix();
-  for (size_t i = 0; i < shape.size(); i++) {
-    for (size_t j = 0; j < shape[i].size(); j++) {
+  for (std::size_t i = 0; i < shape.size(); i++) {
+    for (std::size_t j = 0; j < shape[i].size(); j++) {
       matrix[i][j] = shape[i][j] ? itemID : 0;
     }
   }
@@ -43,7 +43,7 @@ Item::Item(int id, std::vector<std::vector<bool>> shape)
 Item::Item(int id, std::vector<bool> shape)
     : height(1), width(shape.size()), itemID(id) {
   initialize_matrix();
-  for (size_t i = 0; i < shape.size(); i++) {
+  for (std::size_t i = 0; i < shape.size(); i++) {
     matrix[0][i] = shape[i] ? itemID : 0;
   }
 }
