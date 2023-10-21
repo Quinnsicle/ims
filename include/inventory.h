@@ -3,7 +3,6 @@
 #include "item.h"
 
 class Inventory {
-
   std::size_t height;
   std::size_t width;
   std::vector<std::vector<int>> matrix;
@@ -15,14 +14,16 @@ class Inventory {
 
   void set_matrix(std::vector<std::vector<int>> newMatrix);
 
-public:
+ public:
   Inventory();
 
   Inventory(int h, int w);
 
   std::vector<std::vector<int>> get_matrix();
 
-  void remove(Item &item);
+  void remove(const Item &item);
+
+  void remove(const int &item_id);
 
   void place(Item &item, std::pair<int, int> origin);
 };

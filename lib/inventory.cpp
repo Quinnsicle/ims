@@ -1,11 +1,11 @@
+#include "inventory.h"
+
 #include <algorithm>
 #include <cctype>
 #include <iostream>
 #include <stack>
 #include <utility>
 #include <vector>
-
-#include "inventory.h"
 
 void Inventory::revert_location(std::pair<int, int> item) {}
 
@@ -23,10 +23,20 @@ Inventory::Inventory(int h, int w) : height(h), width(w) {
 
 std::vector<std::vector<int>> Inventory::get_matrix() { return matrix; }
 
-void Inventory::remove(Item &item) {
+void Inventory::remove(const Item &item) {
   for (size_t row = 0; row < matrix.size(); row++) {
     for (size_t col = 0; col < matrix.size(); col++) {
       if (matrix[row][col] == item.id()) {
+        matrix[row][col] = 0;
+      }
+    }
+  }
+}
+
+void Inventory::remove(const int &item_id) {
+  for (size_t row = 0; row < matrix.size(); row++) {
+    for (size_t col = 0; col < matrix.size(); col++) {
+      if (matrix[row][col] == item_id) {
         matrix[row][col] = 0;
       }
     }

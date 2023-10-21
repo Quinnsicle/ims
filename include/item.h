@@ -12,7 +12,7 @@ class Item {
 
   void initialize_matrix();
 
-public:
+ public:
   Item(int id);
 
   Item(int id, int dimension);
@@ -29,7 +29,8 @@ public:
   void shape(std::vector<std::vector<int>> shape) { matrix = shape; }
 
   // getters
-  int id() { return itemID; }
+  const int id() const { return itemID; }
+
   std::vector<std::vector<int>> shape() { return matrix; }
 };
 
