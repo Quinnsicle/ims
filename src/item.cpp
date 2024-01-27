@@ -1,7 +1,7 @@
 #include "item.h"
 
 void Item::initialize_matrix() {
-  matrix = std::vector<std::vector<int>>(height, std::vector<int>(width, 0));
+  matrix = Matrix<int>(height, std::vector<int>(width, 0));
 }
 
 Item::Item(int id) : height(1), width(1), itemID(id) {
@@ -17,7 +17,7 @@ Item::Item(int id, int dimension)
   matrix.assign(height, row);
 }
 
-Item::Item(int id, std::vector<std::vector<int>> shape)
+Item::Item(int id, Matrix<int> shape)
     : height(shape.size()), width(shape[0].size()), itemID(id) {
   matrix = shape;
 }

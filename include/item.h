@@ -3,10 +3,12 @@
 
 #include <vector>
 
+#include "matrix.h"
+
 class Item {
   std::size_t height;
   std::size_t width;
-  std::vector<std::vector<int>> matrix;
+  Matrix<int> matrix;
 
   int itemID;
 
@@ -17,7 +19,7 @@ class Item {
 
   Item(int id, int dimension);
 
-  Item(int id, std::vector<std::vector<int>> shape);
+  Item(int id, Matrix<int> shape);
 
   Item(int id, std::vector<int> shape);
 
@@ -25,13 +27,10 @@ class Item {
 
   Item(int id, std::vector<bool> shape);
 
-  // setters
-  void shape(std::vector<std::vector<int>> shape) { matrix = shape; }
+  void shape(Matrix<int> shape) { matrix = shape; }
+  Matrix<int> shape() { return matrix; }
 
-  // getters
   const int id() const { return itemID; }
-
-  std::vector<std::vector<int>> shape() { return matrix; }
 };
 
 #endif

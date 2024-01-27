@@ -7,37 +7,40 @@
 #include <utility>
 #include <vector>
 
-void Inventory::revert_location(std::pair<int, int> item) {}
-
-void Inventory::set_matrix(std::vector<std::vector<int>> newMatrix) {
-  matrix = newMatrix;
-}
-
 Inventory::Inventory() : height(2), width(2) {
-  matrix.assign(height, std::vector<int>(width));
+  m.assign(height, std::vector<int>(width));
 }
 
 Inventory::Inventory(int h, int w) : height(h), width(w) {
-  matrix.assign(height, std::vector<int>(width));
+  m.assign(height, std::vector<int>(width));
 }
 
-std::vector<std::vector<int>> Inventory::get_matrix() { return matrix; }
+void Inventory::matrix(Matrix<int> newMatrix) { m = newMatrix; }
+
+void Inventory::revert_location(std::pair<int, int> item) {}
+
+Matrix<int> Inventory::matrix() { return m; }
+
+void Inventory::clear() {
+  Inventory empty;
+  swap(empty, *this);
+}
 
 void Inventory::remove(const Item &item) {
-  for (size_t row = 0; row < matrix.size(); row++) {
-    for (size_t col = 0; col < matrix.size(); col++) {
-      if (matrix[row][col] == item.id()) {
-        matrix[row][col] = 0;
+  for (size_t row = 0; row < m.size(); row++) {
+    for (size_t col = 0; col < m.size(); col++) {
+      if (m[row][col] == item.id()) {
+        m[row][col] = 0;
       }
     }
   }
 }
 
 void Inventory::remove(const int &item_id) {
-  for (size_t row = 0; row < matrix.size(); row++) {
-    for (size_t col = 0; col < matrix.size(); col++) {
-      if (matrix[row][col] == item_id) {
-        matrix[row][col] = 0;
+  for (size_t row = 0; row < m.size(); row++) {
+    for (size_t col = 0; col < m.size(); col++) {
+      if (m[row][col] == item_id) {
+        m[row][col] = 0;
       }
     }
   }
@@ -45,7 +48,7 @@ void Inventory::remove(const int &item_id) {
 
 void Inventory::place(Item &item, std::pair<int, int> origin) {
   auto itemMatrix = item.shape();
-  auto invMatrix = get_matrix();
+  auto invMatrix = matrix();
   int x = origin.first;
   int y = origin.second;
   bool success = true;
@@ -67,6 +70,6 @@ void Inventory::place(Item &item, std::pair<int, int> origin) {
   }
 
   if (success) {
-    set_matrix(invMatrix);
+    matrix(invMatrix);
   }
 }

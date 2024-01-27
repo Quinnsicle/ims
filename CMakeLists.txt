@@ -6,7 +6,7 @@ project(ims
 include(CTest)
 enable_testing()
 
-add_subdirectory(lib)
+add_subdirectory(src)
 add_subdirectory(app)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
